@@ -18,14 +18,13 @@ class HtmlViewerWidget(QWidget):
 
         self.__initUi()
         self.__lst = []
-        self.__cur_filename_of_title = 'No file selected'
-        self.__title_text = f'{self.windowTitle()} - {self.__cur_filename_of_title}'
+        self.__title = self.window().windowTitle() + ' - {0}'
         self.__cur_idx = 0
         self.setMouseTracking(True)
 
     def __initUi(self):
         self.__page_text = 'Page: {0}'
-        self.__pageLabel = QLabel(self.__page_text.format('1'))
+        self.__pageLabel = QLabel(self.__page_text.format(''))
         self.__prevBtn = QPushButton('Prev')
         self.__nextBtn = QPushButton('Next')
         self.__closeBtn = QPushButton('Close')
@@ -91,9 +90,9 @@ class HtmlViewerWidget(QWidget):
 
     def setCurrentIndex(self, idx):
         self.__cur_idx = idx
-        self.__cur_filename_of_title = self.__lst[self.__cur_idx]
-        self.__title_text = self.__title_text.format(self.__cur_filename_of_title)
-        self.window().setWindowTitle(self.__title_text)
+
+        self.__title.format(self.__lst[self.__cur_idx])
+        self.window().setWindowTitle(self.__title)
 
         self.__pageLabel.setText(self.__page_text.format(self.__cur_idx+1))
 
