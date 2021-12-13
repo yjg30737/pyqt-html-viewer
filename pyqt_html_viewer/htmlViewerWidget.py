@@ -18,7 +18,6 @@ class HtmlViewerWidget(QWidget):
 
         self.__initUi()
         self.__lst = []
-        self.__title = self.window().windowTitle() + ' - {0}'
         self.__cur_idx = 0
         self.setMouseTracking(True)
 
@@ -90,9 +89,7 @@ class HtmlViewerWidget(QWidget):
 
     def setCurrentIndex(self, idx):
         self.__cur_idx = idx
-
-        self.__title.format(self.__lst[self.__cur_idx])
-        self.window().setWindowTitle(self.__title)
+        self.window().setWindowTitle('HTML Viewer - {0}'.format(self.__lst[self.__cur_idx]))
 
         self.__pageLabel.setText(self.__page_text.format(self.__cur_idx+1))
 
