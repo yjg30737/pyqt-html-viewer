@@ -5,6 +5,16 @@ PyQt HTML Viewer
 * PyQt5 >= 5.8
 * pyqtwebengine // For showing html file
 
+## Features
+* Being able to view all of html files in the folder
+* Being able to see all of html files in the files list
+* Being able to see html file when double-clicking one of files in the list 
+* Being able to view the source of current html file
+* Being able to see previous, next html file with left, right key
+* Being able to resize each of widgets. (QSplitter)
+
+Note: Some of features are broken. I will figure that out.
+
 ## Setup
 ```
 pip3 install pyqt5 --upgrade # If you don't have pyqt5
