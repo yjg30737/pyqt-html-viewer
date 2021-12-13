@@ -1,9 +1,8 @@
 import posixpath
-import sys
 import os
 
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, QFileDialog, QWidget, \
+from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QWidget, \
     QSplitter, QGridLayout
 from PyQt5.QtCore import Qt
 
@@ -183,10 +182,3 @@ class HtmlViewer(QMainWindow):
         self.__fileListWidget.setCurrentItem(idx)
         self.__showHtmlSource(idx)
         self.__htmlViewer.setFocus()
-
-
-if __name__ == "__main__" :
-    app = QApplication(sys.argv)
-    htmlViewer = HtmlViewer()
-    htmlViewer.show()
-    app.exec_()
