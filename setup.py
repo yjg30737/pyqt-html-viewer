@@ -16,6 +16,6 @@ setup(
     install_requires=[
         'PyQt5>=5.8',
         'pyqt-checkbox-list-widget @ git+https://git@github.com/yjg30737/pyqt-checkbox-list-widget.git@main',
-        'simplePyQt5 @ git+https://git@github.com/yjg30737/simplePyQt5.git@main'
+        'simplePyQt5 @ git+https://git@github.com/yjg30737/simplePyQt5.git@master'
     ]
 )
