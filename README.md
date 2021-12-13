@@ -23,6 +23,10 @@ pip3 install git+https://github.com/yjg30737/pyqt-html-viewer.git --upgrade
 ```
 Note: If ModuleNotFoundError occured then do it all above in order.
 
+## Included Packages
+* <a href="https://github.com/yjg30737/pyqt-checkbox-list-widget.git">pyqt-checkbox-list-widget</a>
+* <a href="https://github.com/yjg30737/simplePyQt5.git">simplePyQt5</a>
+
 ## Code Example
 ```python
 from PyQt5.QtWidgets import QApplication
