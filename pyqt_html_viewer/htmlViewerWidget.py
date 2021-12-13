@@ -149,22 +149,22 @@ class HtmlViewerWidget(QWidget):
         self.__bottomWidget.setVisible(f)
 
     def removeSomeFilesFromViewer(self, filenames: list):
-        idx = 0
         cur_idx = self.getCurrentIndex()
-        maintain_cur_idx_if_cur_idx_still_remain = True
-        for filename in filenames:
-            idx_to_remove = self.__lst.index(filename)
-            self.__lst.remove(filename)
-            if cur_idx == idx_to_remove:
-                maintain_cur_idx_if_cur_idx_still_remain = False
+        maintain_cur_idx_if_cur_idx_file_still_remain = self.__lst[cur_idx] in filenames
 
-        if len(self.__lst) > idx:
-            if maintain_cur_idx_if_cur_idx_still_remain:
-                pass
+        for filename in filenames:
+            self.__lst.remove(filename)
+
+        if len(self.__lst) == 0:
+            pass
+        elif len(self.__lst) > cur_idx:
+            if maintain_cur_idx_if_cur_idx_file_still_remain:
+                self.setCurrentIndex(self.__lst.index(self.__lst[cur_idx]))
             else:
-                self.setCurrentIndex(idx)
-        else:
-            self.setCurrentIndex(len(self.__lst)-1)
+                self.setCurrentIndex(cur_idx-(len(self.__lst)-len(filenames)))
+        elif len(self.__lst) <= cur_idx:
+            self.setCurrentIndex(-1)
+
 
     def __close(self):
         f = False

@@ -170,8 +170,10 @@ class HtmlViewer(QMainWindow):
         self.__htmlViewer.setCurrentIndex(r)
 
     def __showHtmlSource(self, r):
-        filename = self.__fileListWidget.getItem(r).text()
-        self.__srcWidget.setSourceOfFile(filename)
+        item = self.__fileListWidget.getItem(r)
+        if item:
+            filename = item.text()
+            self.__srcWidget.setSourceOfFile(filename)
 
     def __removeSomeFilesFromViewer(self, filenames: list):
         self.__htmlViewer.removeSomeFilesFromViewer(filenames)
