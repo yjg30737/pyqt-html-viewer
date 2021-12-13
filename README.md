@@ -21,7 +21,7 @@ pip3 install pyqt5 --upgrade # If you don't have pyqt5
 pip3 install pyqtwebengine --upgrade # If you don't have pyqtwebengine
 pip3 install git+https://github.com/yjg30737/pyqt-html-viewer.git --upgrade
 ```
-Note: Install order is important. pyqt5 first, pyqtwebengine second.
+Note: Install order is important. Install pyqt5 first, then install pyqtwebengine.
 
 ## Code Example
 ```python
