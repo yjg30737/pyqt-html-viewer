@@ -10,7 +10,8 @@ setup(
     license='MIT',
     packages=find_packages(),
     package_data={'pyqt_html_viewer.style': ['button.css', 'dark_gray_theme.css', 'viewer_button.css'],
-                  'pyqt_html_viewer.ico': os.listdir()[1:]},
+                  'pyqt_html_viewer.ico': ['add_dir.png', 'add_file.png', 'close.png', 'list.png', 'navigation_bar.png',
+                                           'remove.png', 'source.png']},
     description='PyQt html viewer',
     url='https://github.com/yjg30737/pyqt-html-viewer.git',
     install_requires=[
