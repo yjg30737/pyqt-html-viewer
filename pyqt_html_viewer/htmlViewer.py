@@ -2,7 +2,7 @@ import posixpath
 import os
 
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QWidget, \
-    QSplitter, QGridLayout, QWidgetAction
+    QSplitter, QGridLayout, QWidgetAction, QToolBar
 from PyQt5.QtCore import Qt
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
@@ -122,14 +122,14 @@ class HtmlViewer(QMainWindow):
             self.__showNavigationToolbarBtn.setToolTip('Show navigation toolbar')
 
     def __setToolBar(self):
-        fileToolBar = self.addToolBar('파일')
-        fileToolBar.addAction(self.__loadFileAction)
-        fileToolBar.addAction(self.__loadDirAction)
-        fileToolBar.addAction(self.__htmlFileListToggleAction)
-        fileToolBar.addAction(self.__showNavigationToolbarAction)
-        fileToolBar.addAction(self.__srcWidgetToggleAction)
-
-        fileToolBar.setMovable(False)
+        toolbar = QToolBar()
+        toolbar.addAction(self.__loadFileAction)
+        toolbar.addAction(self.__loadDirAction)
+        toolbar.addAction(self.__htmlFileListToggleAction)
+        toolbar.addAction(self.__showNavigationToolbarAction)
+        toolbar.addAction(self.__srcWidgetToggleAction)
+        toolbar.setMovable(False)
+        self.addToolBar(toolbar)
 
     def __srcWidgetToggle(self):
         if self.__srcWidget.isHidden():
