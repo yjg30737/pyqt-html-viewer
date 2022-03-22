@@ -130,6 +130,7 @@ class HtmlViewer(QMainWindow):
         toolbar.addAction(self.__srcWidgetToggleAction)
         toolbar.setMovable(False)
         self.addToolBar(toolbar)
+        toolbar.setStyleSheet('QToolBar { background-color: #888; }')
 
     def __srcWidgetToggle(self):
         if self.__srcWidget.isHidden():
