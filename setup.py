@@ -10,7 +10,7 @@ setup(
     package_data={'pyqt_html_viewer.style': ['button.css', 'dark_gray_theme.css', 'viewer_button.css'],
                   'pyqt_html_viewer.ico': ['add_dir.png', 'add_file.png', 'close.png', 'list.png', 'navigation_bar.png',
                                            'remove.png', 'source.png', 'html.svg']},
-    description='PyQt html viewer',
+    description='PyQt html viewer application',
     url='https://github.com/yjg30737/pyqt-html-viewer.git',
     install_requires=[
         'PyQt5>=5.8',
