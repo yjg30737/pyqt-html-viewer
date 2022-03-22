@@ -8,8 +8,8 @@ setup(
     license='MIT',
     packages=find_packages(),
     package_data={'pyqt_html_viewer.style': ['button.css', 'dark_gray_theme.css', 'viewer_button.css'],
-                  'pyqt_html_viewer.ico': ['add_dir.png', 'add_file.png', 'close.png', 'list.png', 'navigation_bar.png',
-                                           'remove.png', 'source.png', 'html.svg']},
+                  'pyqt_html_viewer.ico': ['add_dir.svg', 'add_file.svg', 'close.svg', 'list.svg', 'navigation_bar.svg',
+                                           'remove.svg', 'source.svg', 'html.svg']},
     description='PyQt html viewer application',
     url='https://github.com/yjg30737/pyqt-html-viewer.git',
     install_requires=[
