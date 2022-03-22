@@ -114,12 +114,12 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleAction.setDefaultWidget(self.__srcWidgetToggleBtn)
 
     def __showNavigationToolbar(self, f):
-        self.__showNavigationToolbarAction.setChecked(f)
+        self.__showNavigationToolbarBtn.setChecked(f)
         self.__htmlViewer.setBottomWidgetVisible(f)
         if f:
-            self.__htmlViewer.setToolTip('Hide navigation toolbar')
+            self.__showNavigationToolbarBtn.setToolTip('Hide navigation toolbar')
         else:
-            self.__htmlViewer.setToolTip('Show navigation toolbar')
+            self.__showNavigationToolbarBtn.setToolTip('Show navigation toolbar')
 
     def __setToolBar(self):
         fileToolBar = self.addToolBar('파일')
@@ -134,24 +134,24 @@ class HtmlViewer(QMainWindow):
     def __srcWidgetToggle(self):
         if self.__srcWidget.isHidden():
             self.__srcWidget.show()
-            self.__srcWidgetToggleAction.setToolTip('Hide source browser')
+            self.__srcWidgetToggleBtn.setToolTip('Hide source browser')
         else:
             self.__srcWidget.hide()
-            self.__srcWidgetToggleAction.setToolTip('Show source browser')
+            self.__srcWidgetToggleBtn.setToolTip('Show source browser')
 
     def __htmlFileListToggle(self, f):
         if f:
             self.__fileListWidget.show()
-            self.__htmlFileListToggleAction.setToolTip('Hide files list')
+            self.__htmlFileListToggleBtn.setToolTip('Hide files list')
         else:
             self.__fileListWidget.hide()
-            self.__htmlFileListToggleAction.setToolTip('Show files list')
+            self.__htmlFileListToggleBtn.setToolTip('Show files list')
 
     def __fileListWidgetBtnToggled(self):
-        self.__htmlFileListToggleAction.setChecked(self.__fileListWidget.isHidden())
+        self.__htmlFileListToggleBtn.setChecked(self.__fileListWidget.isHidden())
 
     def __srcWidgetBtnToggled(self):
-        self.__srcWidgetToggleAction.setChecked(self.__srcWidget.isHidden())
+        self.__srcWidgetToggleBtn.setChecked(self.__srcWidget.isHidden())
 
     def __loadFile(self):
         filename = QFileDialog.getOpenFileName(self, 'Select a File', '', "HTML Files (*.html)")
