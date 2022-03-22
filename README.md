@@ -2,7 +2,7 @@
 PyQt HTML Viewer 
 
 ## Requirements
-* PyQt5 >= 5.8
+* PyQt5 >= 5.15.1
 * pyqtwebengine // For showing html file
 
 ## Features
