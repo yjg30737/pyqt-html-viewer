@@ -10,5 +10,5 @@ class HtmlViewerApp(QApplication):
         super().__init__(*args, **kwargs)
         htmlViewer = HtmlViewer()
         StyleSetter.setWindowStyle(htmlViewer)
-        titleBarWindow = CustomTitlebarSetter.getCustomTitleBar(htmlViewer, icon_filename='ico/html.svg')
-        titleBarWindow.show()
+        self.__titleBarWindow = CustomTitlebarSetter.getCustomTitleBar(htmlViewer, icon_filename='ico/html.svg')
+        self.__titleBarWindow.show()
