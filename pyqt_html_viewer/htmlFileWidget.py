@@ -1,10 +1,8 @@
-import os
-
 from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QPushButton, QCheckBox, QLabel
+from PyQt5.QtWidgets import QWidget, QCheckBox, QLabel
 
 from pyqt_checkbox_list_widget.checkBoxListWidget import CheckBoxListWidget
+from pyqt_svg_icon_pushbutton import SvgIconPushButton
 from simplePyQt5 import VerticalWidget, LeftRightWidget
 from simplePyQt5.topLeftRightWidget import TopLeftRightWidget
 
@@ -19,18 +17,10 @@ class HtmlFileWidget(QWidget):
         self.__initUi()
 
     def __initUi(self):
-        closeBtn = QPushButton()
+        closeBtn = SvgIconPushButton()
+        closeBtn.setIcon('ico/close.svg')
         closeBtn.clicked.connect(self.close)
 
-        rel_path = os.path.relpath(__file__, os.getcwd())
-
-        css_file_path = os.path.join(os.path.dirname(rel_path), r'style/button.css')
-        css_file = open(css_file_path)
-        button_css_code = css_file.read()
-        css_file.close()
-
-        closeBtn.setStyleSheet(button_css_code)
-        closeBtn.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), r'ico/close.png')))
         closeBtn.setToolTip('Close')
 
         self.__allChkBox = QCheckBox('Check all')
@@ -38,9 +28,8 @@ class HtmlFileWidget(QWidget):
         # todo
         # self.__onlyFileNameChkBox = QCheckBox('Show filename only')
 
-        self.__removeBtn = QPushButton()
-        self.__removeBtn.setStyleSheet(button_css_code)
-        self.__removeBtn.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/remove.png')))
+        self.__removeBtn = SvgIconPushButton()
+        self.__removeBtn.setIcon('ico/remove.svg')
         self.__removeBtn.setToolTip('Remove')
         self.__removeBtn.clicked.connect(self.__remove)
 
