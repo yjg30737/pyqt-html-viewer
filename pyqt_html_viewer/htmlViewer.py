@@ -3,8 +3,9 @@ import os
 
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QWidget, \
-    QSplitter, QGridLayout
+    QSplitter, QGridLayout, QWidgetAction
 from PyQt5.QtCore import Qt
+from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
 from pyqt_html_viewer.htmlFileWidget import HtmlFileWidget
 from pyqt_html_viewer.htmlViewerWidget import HtmlViewerWidget
@@ -74,32 +75,42 @@ class HtmlViewer(QMainWindow):
     def __setActions(self):
         rel_path = os.path.relpath(__file__, os.getcwd())
 
-        self.__loadFileAction = QAction(self)
-        self.__loadFileAction.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/add_file.png')))
+        self.__loadFileAction = QWidgetAction(self)
+        loadFileBtn = SvgIconPushButton()
+        loadFileBtn.setIcon('ico/add_file.svg')
+        self.__loadFileAction.setDefaultWidget(loadFileBtn)
         self.__loadFileAction.setToolTip('Open files...')
         self.__loadFileAction.triggered.connect(self.__loadFile)
 
-        self.__loadDirAction = QAction(self)
-        self.__loadDirAction.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/add_dir.png')))
+        self.__loadDirAction = QWidgetAction(self)
+        loadDirBtn = SvgIconPushButton()
+        loadDirBtn.setIcon('ico/add_dir.svg')
+        self.__loadDirAction.setDefaultWidget(loadDirBtn)
         self.__loadDirAction.setToolTip('Open directory...')
         self.__loadDirAction.triggered.connect(self.__loadDir)
 
-        self.__htmlFileListToggleAction = QAction(self)
+        self.__htmlFileListToggleAction = QWidgetAction(self)
+        htmlFileListToggleBtn = SvgIconPushButton()
+        htmlFileListToggleBtn.setIcon('ico/list.svg')
+        self.__htmlFileListToggleAction.setDefaultWidget(htmlFileListToggleBtn)
         self.__htmlFileListToggleAction.setCheckable(True)
-        self.__htmlFileListToggleAction.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/list.png')))
         self.__htmlFileListToggleAction.setToolTip('Show files list')
         self.__htmlFileListToggleAction.toggled.connect(self.__htmlFileListToggle)
 
-        self.__showNavigationToolbarAction = QAction(self)
+        self.__showNavigationToolbarAction = QWidgetAction(self)
+        showNavigationToolbarBtn = SvgIconPushButton()
+        showNavigationToolbarBtn.setIcon('ico/navigation_bar.svg')
+        self.__showNavigationToolbarAction.setDefaultWidget(showNavigationToolbarBtn)
         self.__showNavigationToolbarAction.setCheckable(True)
         self.__showNavigationToolbarAction.setChecked(True)
-        self.__showNavigationToolbarAction.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/navigation_bar.png')))
         self.__showNavigationToolbarAction.setToolTip('Hide navigation toolbar')
         self.__showNavigationToolbarAction.toggled.connect(self.__showNavigationToolbar)
 
-        self.__srcWidgetToggleAction = QAction(self)
+        self.__srcWidgetToggleAction = QWidgetAction(self)
+        srcWidgetToggleBtn = SvgIconPushButton()
+        srcWidgetToggleBtn.setIcon('ico/source.svg')
+        self.__srcWidgetToggleAction.setDefaultWidget(srcWidgetToggleBtn)
         self.__srcWidgetToggleAction.setCheckable(True)
-        self.__srcWidgetToggleAction.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), 'ico/source.png')))
         self.__srcWidgetToggleAction.setToolTip('Show source browser')
         self.__srcWidgetToggleAction.toggled.connect(self.__srcWidgetToggle)
 
