@@ -1,8 +1,7 @@
 import posixpath
 import os
 
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QWidget, \
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QWidget, \
     QSplitter, QGridLayout, QWidgetAction
 from PyQt5.QtCore import Qt
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
