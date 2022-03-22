@@ -89,7 +89,7 @@ class HtmlViewer(QMainWindow):
         self.__loadDirAction.setDefaultWidget(self.__loadDirBtn)
 
         self.__htmlFileListToggleAction = QWidgetAction(self)
-        self.__htmlFileListToggleBtn = SvgIconPushButton()
+        self.__htmlFileListToggleBtn = SvgIconPushButton(self)
         self.__htmlFileListToggleBtn.setIcon('ico/list.svg')
         self.__htmlFileListToggleBtn.setCheckable(True)
         self.__htmlFileListToggleBtn.setToolTip('Show files list')
@@ -97,7 +97,7 @@ class HtmlViewer(QMainWindow):
         self.__htmlFileListToggleAction.setDefaultWidget(self.__htmlFileListToggleBtn)
 
         self.__showNavigationToolbarAction = QWidgetAction(self)
-        self.__showNavigationToolbarBtn = SvgIconPushButton()
+        self.__showNavigationToolbarBtn = SvgIconPushButton(self)
         self.__showNavigationToolbarBtn.setIcon('ico/navigation_bar.svg')
         self.__showNavigationToolbarBtn.setCheckable(True)
         self.__showNavigationToolbarBtn.setChecked(True)
@@ -106,7 +106,7 @@ class HtmlViewer(QMainWindow):
         self.__showNavigationToolbarAction.setDefaultWidget(self.__showNavigationToolbarBtn)
 
         self.__srcWidgetToggleAction = QWidgetAction(self)
-        self.__srcWidgetToggleBtn = SvgIconPushButton()
+        self.__srcWidgetToggleBtn = SvgIconPushButton(self)
         self.__srcWidgetToggleBtn.setIcon('ico/source.svg')
         self.__srcWidgetToggleBtn.setCheckable(True)
         self.__srcWidgetToggleBtn.setToolTip('Show source browser')
