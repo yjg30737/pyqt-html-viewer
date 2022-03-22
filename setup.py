@@ -13,7 +13,7 @@ setup(
     description='PyQt html viewer application',
     url='https://github.com/yjg30737/pyqt-html-viewer.git',
     install_requires=[
-        'PyQt5>=5.8',
+        'PyQt5>=5.15.1',
         'pyqtwebengine',
         'pyqt-checkbox-list-widget @ git+https://git@github.com/yjg30737/pyqt-checkbox-list-widget.git@main',
         'pyqt-style-setter @ git+https://git@github.com/yjg30737/pyqt-style-setter.git@main',
