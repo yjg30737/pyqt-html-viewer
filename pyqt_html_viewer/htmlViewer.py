@@ -99,7 +99,7 @@ class HtmlViewer(QMainWindow):
         self.__showNavigationToolbarBtn.setCheckable(True)
         self.__showNavigationToolbarBtn.setChecked(True)
         self.__showNavigationToolbarBtn.setShortcut('Ctrl+B')
-        self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide navigation bar',
+        self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide Navigation Bar',
                                                                                        shortcut='Ctrl+B'))
         self.__showNavigationToolbarBtn.toggled.connect(self.__showNavigationToolbar)
         self.__showNavigationToolbarAction.setDefaultWidget(self.__showNavigationToolbarBtn)
@@ -109,7 +109,7 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleBtn.setIcon('ico/source.svg')
         self.__srcWidgetToggleBtn.setCheckable(True)
         self.__srcWidgetToggleBtn.setShortcut('Ctrl+S')
-        self.__srcWidgetToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show source browser',
+        self.__srcWidgetToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show Source Browser',
                                                                                  shortcut='Ctrl+S'))
         self.__srcWidgetToggleBtn.toggled.connect(self.__srcWidgetToggle)
         self.__srcWidgetToggleAction.setDefaultWidget(self.__srcWidgetToggleBtn)
