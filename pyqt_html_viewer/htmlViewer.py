@@ -63,8 +63,6 @@ class HtmlViewer(QMainWindow):
         super().keyPressEvent(e)
 
     def __setActions(self):
-        rel_path = os.path.relpath(__file__, os.getcwd())
-
         self.__loadFileAction = QWidgetAction(self)
         self.__loadFileBtn = SvgIconPushButton(self)
         self.__loadFileBtn.setIcon('ico/add_file.svg')
@@ -141,6 +139,7 @@ class HtmlViewer(QMainWindow):
         toolbar.addAction(self.__htmlFileListToggleAction)
         toolbar.addAction(self.__showNavigationToolbarAction)
         toolbar.addAction(self.__srcWidgetToggleAction)
+        toolbar.addAction(self.__fullScreenToggleAction)
         toolbar.setMovable(False)
         self.addToolBar(toolbar)
         toolbar.setStyleSheet('QToolBar { background-color: #888; }')
