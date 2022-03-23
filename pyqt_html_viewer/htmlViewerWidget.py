@@ -54,18 +54,6 @@ class HtmlViewerWidget(QWidget):
         self.__prevBtn.setEnabled(False)
         self.__nextBtn.setEnabled(False)
 
-        rel_path = os.path.relpath(__file__, os.getcwd())
-
-        css_file_path = os.path.join(os.path.dirname(rel_path),
-                                     r'style/viewer_button.css')
-        css_file = open(css_file_path)
-        btn_css_code = css_file.read()
-        css_file.close()
-
-        self.__prevBtn.setStyleSheet(btn_css_code)
-        self.__nextBtn.setStyleSheet(btn_css_code)
-        self.__closeBtn.setStyleSheet(btn_css_code)
-
         self.__webView = QWebEngineView()
 
         self.__topWidget = QStackedWidget()
