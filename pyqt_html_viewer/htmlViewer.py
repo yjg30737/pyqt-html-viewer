@@ -9,6 +9,7 @@ from pyqt_svg_icon_pushbutton import SvgIconPushButton
 from pyqt_html_viewer.htmlFileWidget import HtmlFileWidget
 from pyqt_html_viewer.htmlViewerWidget import HtmlViewerWidget
 from pyqt_html_viewer.sourceWidget import SourceWidget
+from pyqt_description_tooltip import DescriptionToolTipGetter
 
 
 class HtmlViewer(QMainWindow):
@@ -67,14 +68,18 @@ class HtmlViewer(QMainWindow):
         self.__loadFileAction = QWidgetAction(self)
         self.__loadFileBtn = SvgIconPushButton(self)
         self.__loadFileBtn.setIcon('ico/add_file.svg')
-        self.__loadFileBtn.setToolTip('Open files...')
+        self.__loadFileBtn.setShortcut('Ctrl+O')
+        self.__loadFileBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Open Files',
+                                                                          shortcut='Ctrl+O'))
         self.__loadFileBtn.clicked.connect(self.__loadFile)
         self.__loadFileAction.setDefaultWidget(self.__loadFileBtn)
 
         self.__loadDirAction = QWidgetAction(self)
         self.__loadDirBtn = SvgIconPushButton(self)
         self.__loadDirBtn.setIcon('ico/add_dir.svg')
-        self.__loadDirBtn.setToolTip('Open directory...')
+        self.__loadDirBtn.setShortcut('Ctrl+Shift+O')
+        self.__loadDirBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Open Directory',
+                                                                          shortcut='Ctrl+Shift+O'))
         self.__loadDirBtn.clicked.connect(self.__loadDir)
         self.__loadDirAction.setDefaultWidget(self.__loadDirBtn)
 
@@ -82,7 +87,9 @@ class HtmlViewer(QMainWindow):
         self.__htmlFileListToggleBtn = SvgIconPushButton(self)
         self.__htmlFileListToggleBtn.setIcon('ico/list.svg')
         self.__htmlFileListToggleBtn.setCheckable(True)
-        self.__htmlFileListToggleBtn.setToolTip('Show files list')
+        self.__htmlFileListToggleBtn.setShortcut('Ctrl+L')
+        self.__htmlFileListToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show File List',
+                                                                                    shortcut='Ctrl+L'))
         self.__htmlFileListToggleBtn.toggled.connect(self.__htmlFileListToggle)
         self.__htmlFileListToggleAction.setDefaultWidget(self.__htmlFileListToggleBtn)
 
@@ -91,7 +98,9 @@ class HtmlViewer(QMainWindow):
         self.__showNavigationToolbarBtn.setIcon('ico/navigation_bar.svg')
         self.__showNavigationToolbarBtn.setCheckable(True)
         self.__showNavigationToolbarBtn.setChecked(True)
-        self.__showNavigationToolbarBtn.setToolTip('Hide navigation toolbar')
+        self.__showNavigationToolbarBtn.setShortcut('Ctrl+B')
+        self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide navigation bar',
+                                                                                       shortcut='Ctrl+B'))
         self.__showNavigationToolbarBtn.toggled.connect(self.__showNavigationToolbar)
         self.__showNavigationToolbarAction.setDefaultWidget(self.__showNavigationToolbarBtn)
 
@@ -99,7 +108,9 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleBtn = SvgIconPushButton(self)
         self.__srcWidgetToggleBtn.setIcon('ico/source.svg')
         self.__srcWidgetToggleBtn.setCheckable(True)
-        self.__srcWidgetToggleBtn.setToolTip('Show source browser')
+        self.__srcWidgetToggleBtn.setShortcut('Ctrl+S')
+        self.__srcWidgetToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show source browser',
+                                                                                 shortcut='Ctrl+S'))
         self.__srcWidgetToggleBtn.toggled.connect(self.__srcWidgetToggle)
         self.__srcWidgetToggleAction.setDefaultWidget(self.__srcWidgetToggleBtn)
 
@@ -107,9 +118,11 @@ class HtmlViewer(QMainWindow):
         self.__showNavigationToolbarBtn.setChecked(f)
         self.__htmlViewer.setBottomWidgetVisible(f)
         if f:
-            self.__showNavigationToolbarBtn.setToolTip('Hide navigation toolbar')
+            self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide navigation bar',
+                                                                                           shortcut='Ctrl+B'))
         else:
-            self.__showNavigationToolbarBtn.setToolTip('Show navigation toolbar')
+            self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show navigation bar',
+                                                                                           shortcut='Ctrl+B'))
 
     def __setToolBar(self):
         toolbar = QToolBar()
@@ -125,18 +138,22 @@ class HtmlViewer(QMainWindow):
     def __srcWidgetToggle(self):
         if self.__srcWidget.isHidden():
             self.__srcWidget.show()
-            self.__srcWidgetToggleBtn.setToolTip('Hide source browser')
+            self.__srcWidgetToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide source browser',
+                                                                                     shortcut='Ctrl+S'))
         else:
             self.__srcWidget.hide()
-            self.__srcWidgetToggleBtn.setToolTip('Show source browser')
+            self.__srcWidgetToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show source browser',
+                                                                                     shortcut='Ctrl+S'))
 
     def __htmlFileListToggle(self, f):
         if f:
             self.__fileListWidget.show()
-            self.__htmlFileListToggleBtn.setToolTip('Hide files list')
+            self.__htmlFileListToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide File List',
+                                                                                        shortcut='Ctrl+L'))
         else:
             self.__fileListWidget.hide()
-            self.__htmlFileListToggleBtn.setToolTip('Show files list')
+            self.__htmlFileListToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show File List',
+                                                                                        shortcut='Ctrl+L'))
 
     def __fileListWidgetBtnToggled(self):
         self.__htmlFileListToggleBtn.setChecked(self.__fileListWidget.isHidden())
@@ -145,14 +162,14 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleBtn.setChecked(self.__srcWidget.isHidden())
 
     def __loadFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Select a File', '', "HTML Files (*.html)")
+        filename = QFileDialog.getOpenFileName(self, 'Open Files', '', "HTML Files (*.html)")
         if filename[0]:
             filename = filename[0]
             dirname = os.path.dirname(filename)
             self.__setHtmlFilesOfDirectory(dirname, filename)
 
     def __loadDir(self):
-        dirname = QFileDialog.getExistingDirectory(self, 'Select Directory', '', QFileDialog.ShowDirsOnly)
+        dirname = QFileDialog.getExistingDirectory(self, 'Open Directory', '', QFileDialog.ShowDirsOnly)
         if dirname:
             self.__setHtmlFilesOfDirectory(dirname)
 

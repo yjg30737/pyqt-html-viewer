@@ -2,4 +2,5 @@ git+https://git@github.com/yjg30737/pyqt-checkbox-list-widget.git@main
 git+https://git@github.com/yjg30737/pyqt-style-setter.git@main
 git+https://git@github.com/yjg30737/pyqt-custom-titlebar-setter.git@main
 git+https://git@github.com/yjg30737/pyqt-svg-icon-pushbutton.git@main
+git+https://git@github.com/yjg30737/pyqt-description-tooltip.git@main
 git+https://git@github.com/yjg30737/simplePyQt5.git@master

@@ -19,6 +19,7 @@ setup(
         'pyqt-style-setter @ git+https://git@github.com/yjg30737/pyqt-style-setter.git@main',
         'pyqt-custom-titlebar-setter @ git+https://git@github.com/yjg30737/pyqt-custom-titlebar-setter.git@main',
         'pyqt-svg-icon-pushbutton @ git+https://git@github.com/yjg30737/pyqt-svg-icon-pushbutton.git@main',
+        'pyqt-description-tooltip @ git+https://git@github.com/yjg30737/pyqt-description-tooltip.git@main',
         'simplePyQt5 @ git+https://git@github.com/yjg30737/simplePyQt5.git@master'
     ]
 )
