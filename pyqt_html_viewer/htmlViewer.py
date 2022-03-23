@@ -114,6 +114,16 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleBtn.toggled.connect(self.__srcWidgetToggle)
         self.__srcWidgetToggleAction.setDefaultWidget(self.__srcWidgetToggleBtn)
 
+        self.__fullScreenToggleAction = QWidgetAction(self)
+        self.__fullScreenToggleBtn = SvgIconPushButton(self)
+        self.__fullScreenToggleBtn.setIcon('ico/full_screen.svg')
+        self.__fullScreenToggleBtn.setCheckable(True)
+        self.__fullScreenToggleBtn.setShortcut('F11')
+        self.__fullScreenToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show As Full Screen',
+                                                                                  shortcut='F11'))
+        self.__fullScreenToggleBtn.toggled.connect(self.__fullScreenToggle)
+        self.__fullScreenToggleAction.setDefaultWidget(self.__fullScreenToggleBtn)
+        
     def __showNavigationToolbar(self, f):
         self.__showNavigationToolbarBtn.setChecked(f)
         self.__htmlViewer.setBottomWidgetVisible(f)
@@ -154,6 +164,12 @@ class HtmlViewer(QMainWindow):
             self.__fileListWidget.hide()
             self.__htmlFileListToggleBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Show File List',
                                                                                         shortcut='Ctrl+L'))
+
+    def __fullScreenToggle(self, f):
+        if f:
+            self.showFullScreen()
+        else:
+            self.showNormal()
 
     def __fileListWidgetBtnToggled(self):
         self.__htmlFileListToggleBtn.setChecked(self.__fileListWidget.isHidden())
