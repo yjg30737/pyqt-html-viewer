@@ -55,6 +55,7 @@ class HtmlFileWidget(QWidget):
         mainWidget = VerticalWidget()
         mainWidget.addWidgets([topWidget, bottomWidget])
         lay = mainWidget.layout()
+        lay.setContentsMargins(0, 0, 1, 0)
         self.setLayout(lay)
 
         self.__chkToggled()
