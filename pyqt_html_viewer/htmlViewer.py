@@ -56,16 +56,6 @@ class HtmlViewer(QMainWindow):
         self.__setActions()
         self.__setToolBar()
 
-        rel_path = os.path.relpath(__file__, os.getcwd())
-
-        css_file_path = os.path.join(os.path.dirname(rel_path),
-                                     r'style/dark_gray_theme.css')
-        css_file = open(css_file_path)
-        css_code = css_file.read()
-        css_file.close()
-
-        self.setStyleSheet(css_code)
-
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_F12:
             self.__srcWidgetToggle()
