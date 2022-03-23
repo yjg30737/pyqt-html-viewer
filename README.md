@@ -28,6 +28,7 @@ Note: If ModuleNotFoundError occured then do it all above in order.
 * <a href="https://github.com/yjg30737/pyqt-style-setter.git">pyqt-style-setter</a>
 * <a href="https://github.com/yjg30737/pyqt-custom-titlebar-setter.git">pyqt-custom-titlebar-setter</a>
 * <a href="https://github.com/yjg30737/pyqt-svg-icon-pushbutton.git">pyqt-svg-icon-pushbutton</a>
+* <a href="https://github.com/yjg30737/pyqt-description-tooltip.git">pyqt-description-tooltip</a>
 * <a href="https://github.com/yjg30737/simplePyQt5.git">simplePyQt5</a>
 
 ## Code Example
