@@ -21,16 +21,6 @@ class SourceWidget(QWidget):
         closeBtn = QPushButton()
         closeBtn.clicked.connect(self.close)
 
-        rel_path = os.path.relpath(__file__, os.getcwd())
-
-        css_file_path = os.path.join(os.path.dirname(rel_path), r'style/button.css')
-        css_file = open(css_file_path)
-        button_css_code = css_file.read()
-        css_file.close()
-
-        closeBtn.setStyleSheet(button_css_code)
-        closeBtn.setIcon(QIcon(os.path.join(os.path.dirname(rel_path), r'ico/close.png')))
-
         closeBtn.setToolTip('Close')
 
         mainWidget = TopLeftRightWidget()
