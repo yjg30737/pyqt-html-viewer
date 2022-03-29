@@ -2,7 +2,7 @@
 PyQt HTML Viewer 
 
 ## Requirements
-* PyQt5 >= 5.15.1
+* PyQt5 >= 5.15
 * pyqtwebengine // For showing html file
 
 ## Features
@@ -12,8 +12,6 @@ PyQt HTML Viewer
 * Being able to view the source of current html file
 * Being able to see previous, next html file with left, right key
 * Being able to resize each of widgets. (QSplitter)
-
-Note: Some of features are broken. I will figure that out.
 
 ## Setup
 ```
@@ -29,6 +27,7 @@ Note: If ModuleNotFoundError occured then do it all above in order.
 * <a href="https://github.com/yjg30737/pyqt-custom-titlebar-setter.git">pyqt-custom-titlebar-setter</a>
 * <a href="https://github.com/yjg30737/pyqt-svg-icon-pushbutton.git">pyqt-svg-icon-pushbutton</a>
 * <a href="https://github.com/yjg30737/pyqt-description-tooltip.git">pyqt-description-tooltip</a>
+* <a href="https://github.com/yjg30737/pyqt-viewer-widget.git">pyqt-viewer-widget</a>
 * <a href="https://github.com/yjg30737/simplePyQt5.git">simplePyQt5</a>
 
 ## Code Example
