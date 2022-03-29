@@ -46,6 +46,8 @@ if __name__ == "__main__":
 
 Result
 
+Note: This is old interface.
+
 Start page
 
 ![image](https://user-images.githubusercontent.com/55078043/145768616-99853ea0-10ef-49fb-97ef-5a54e5fab79e.png)
