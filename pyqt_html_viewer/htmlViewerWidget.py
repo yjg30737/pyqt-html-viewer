@@ -24,8 +24,11 @@ class HtmlViewerWidget(ViewerWidget):
             pass
         elif len(filenames) > cur_idx:
             if maintain_cur_idx_if_cur_idx_file_still_remain:
-                self.setCurrentIndex(filenames.index(filenames[cur_idx]))
+                cur_filename = filenames[cur_idx]
+                self.setFilenames(filenames, cur_filename)
             else:
-                self.setCurrentIndex(cur_idx-(len(filenames)-len(filenames_to_remove)))
+                cur_filename = filenames[cur_idx - (len(filenames)-len(filenames_to_remove))]
+                self.setFilenames(filenames, cur_filename)
         elif len(filenames) <= cur_idx:
-            self.setCurrentIndex(-1)
+            cur_filename = filenames[-1]
+            self.setFilenames(filenames, cur_filename)
