@@ -25,6 +25,7 @@ class HtmlViewer(QMainWindow):
         self.__htmlViewer.prevSignal.connect(self.__selectCurrentHtmlFileItemInList)
         self.__htmlViewer.nextSignal.connect(self.__selectCurrentHtmlFileItemInList)
         self.__htmlViewer.closeSignal.connect(self.__showNavigationToolbar)
+        self.__htmlViewer.setExtensionsExceptForImage(['.html'])
 
         self.__srcWidget = SourceWidget()
         self.__srcWidget.closeSignal.connect(self.__srcWidgetBtnToggled)
@@ -77,7 +78,7 @@ class HtmlViewer(QMainWindow):
         self.__loadDirBtn.setIcon('ico/add_dir.svg')
         self.__loadDirBtn.setShortcut('Ctrl+Shift+O')
         self.__loadDirBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Open Directory',
-                                                                          shortcut='Ctrl+Shift+O'))
+                                                                         shortcut='Ctrl+Shift+O'))
         self.__loadDirBtn.clicked.connect(self.__loadDir)
         self.__loadDirAction.setDefaultWidget(self.__loadDirBtn)
 
@@ -121,7 +122,7 @@ class HtmlViewer(QMainWindow):
                                                                                   shortcut='F11'))
         self.__fullScreenToggleBtn.toggled.connect(self.__fullScreenToggle)
         self.__fullScreenToggleAction.setDefaultWidget(self.__fullScreenToggleBtn)
-        
+
     def __showNavigationToolbar(self, f):
         self.__showNavigationToolbarBtn.setChecked(f)
         self.__htmlViewer.setBottomWidgetVisible(f)
@@ -190,12 +191,16 @@ class HtmlViewer(QMainWindow):
 
     def __setHtmlFilesOfDirectory(self, dirname, cur_filename=''):
         cur_file_idx = 0
-        filenames = [os.path.join(dirname, filename).replace(os.path.sep, posixpath.sep) for filename in os.listdir(dirname)
+        filenames = [os.path.join(dirname, filename).replace(os.path.sep, posixpath.sep) for filename in
+                     os.listdir(dirname)
                      if os.path.splitext(filename)[-1] == '.html']
         if filenames:
             if cur_filename:
-                cur_file_idx = filenames.index(cur_filename)
-            self.__htmlViewer.setFilenames(filenames, idx=cur_file_idx)
+                pass
+            else:
+                cur_filename = filenames[0]
+            cur_file_idx = filenames.index(cur_filename)
+            self.__htmlViewer.setFilenames(filenames, cur_filename=cur_filename)
             self.__fileListWidget.addItems(filenames, idx=cur_file_idx)
             self.__srcWidget.setSourceOfFile(filenames[cur_file_idx])
 
