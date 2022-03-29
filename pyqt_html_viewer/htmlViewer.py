@@ -21,11 +21,11 @@ class HtmlViewer(QMainWindow):
         self.setWindowTitle('HTML Viewer')
         self.showMaximized()
 
-        self.__htmlViewer = HtmlViewerWidget()
-        self.__htmlViewer.prevSignal.connect(self.__selectCurrentHtmlFileItemInList)
-        self.__htmlViewer.nextSignal.connect(self.__selectCurrentHtmlFileItemInList)
-        self.__htmlViewer.closeSignal.connect(self.__showNavigationToolbar)
-        self.__htmlViewer.setExtensionsExceptForImage(['.html'])
+        self.__viewerWidget = HtmlViewerWidget()
+        self.__viewerWidget.prevSignal.connect(self.__selectCurrentHtmlFileItemInList)
+        self.__viewerWidget.nextSignal.connect(self.__selectCurrentHtmlFileItemInList)
+        self.__viewerWidget.closeSignal.connect(self.__showNavigationToolbar)
+        self.__viewerWidget.setExtensionsExceptForImage(['.html'])
 
         self.__srcWidget = SourceWidget()
         self.__srcWidget.closeSignal.connect(self.__srcWidgetBtnToggled)
@@ -38,7 +38,7 @@ class HtmlViewer(QMainWindow):
 
         splitter = QSplitter()
         splitter.addWidget(self.__fileListWidget)
-        splitter.addWidget(self.__htmlViewer)
+        splitter.addWidget(self.__viewerWidget)
         splitter.addWidget(self.__srcWidget)
         splitter.setSizes([200, 400, 200])
         splitter.setChildrenCollapsible(False)
@@ -125,7 +125,7 @@ class HtmlViewer(QMainWindow):
 
     def __showNavigationToolbar(self, f):
         self.__showNavigationToolbarBtn.setChecked(f)
-        self.__htmlViewer.setBottomWidgetVisible(f)
+        self.__viewerWidget.setBottomWidgetVisible(f)
         if f:
             self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide navigation bar',
                                                                                            shortcut='Ctrl+B'))
@@ -199,12 +199,12 @@ class HtmlViewer(QMainWindow):
             else:
                 cur_filename = filenames[0]
             cur_file_idx = filenames.index(cur_filename)
-            self.__htmlViewer.setFilenames(filenames, cur_filename=cur_filename)
+            self.__viewerWidget.setFilenames(filenames, cur_filename=cur_filename)
             self.__fileListWidget.addItems(filenames, idx=cur_file_idx)
             self.__srcWidget.setSourceOfFile(filenames[cur_file_idx])
 
     def __showHtmlFileToViewer(self, r):
-        self.__htmlViewer.setCurrentIndex(r)
+        self.__viewerWidget.setCurrentIndex(r)
 
     def __showHtmlSource(self, r):
         item = self.__fileListWidget.getItem(r)
@@ -213,11 +213,11 @@ class HtmlViewer(QMainWindow):
             self.__srcWidget.setSourceOfFile(filename)
 
     def __removeSomeFilesFromViewer(self, filenames: list):
-        self.__htmlViewer.removeSomeFilesFromViewer(filenames)
+        self.__viewerWidget.removeSomeFilesFromViewer(filenames)
         self.__selectCurrentHtmlFileItemInList()
 
     def __selectCurrentHtmlFileItemInList(self):
-        idx = self.__htmlViewer.getCurrentIndex()
+        idx = self.__viewerWidget.getCurrentIndex()
         self.__fileListWidget.setCurrentItem(idx)
         self.__showHtmlSource(idx)
-        self.__htmlViewer.setFocus()
+        self.__viewerWidget.setFocus()
