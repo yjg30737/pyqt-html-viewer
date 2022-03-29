@@ -190,7 +190,6 @@ class HtmlViewer(QMainWindow):
             self.__setHtmlFilesOfDirectory(dirname)
 
     def __setHtmlFilesOfDirectory(self, dirname, cur_filename=''):
-        cur_file_idx = 0
         filenames = [os.path.join(dirname, filename).replace(os.path.sep, posixpath.sep) for filename in
                      os.listdir(dirname)
                      if os.path.splitext(filename)[-1] == '.html']
