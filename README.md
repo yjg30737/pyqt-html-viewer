@@ -12,6 +12,7 @@ PyQt HTML Viewer
 * Being able to view the source of current html file
 * Being able to see previous, next html file with left, right key
 * Being able to resize each of widgets. (QSplitter)
+* Being able to see as a full screen
 
 ## Setup
 ```
@@ -32,40 +33,29 @@ Note: If ModuleNotFoundError occured then do it all above in order.
 
 ## Code Example
 ```python
-from PyQt5.QtWidgets import QApplication
-from pyqt_html_viewer.htmlViewer import HtmlViewer
+from pyqt_html_viewer import HtmlViewerApp
 
 if __name__ == "__main__":
     import sys
 
-    app = QApplication(sys.argv)
-    htmlViewer = HtmlViewer()
-    htmlViewer.show()
+    app = HtmlViewerApp(sys.argv)
     app.exec_()
 ```
 
 Result
 
-Note: This is old interface.
-
 Start page
 
-![image](https://user-images.githubusercontent.com/55078043/145768616-99853ea0-10ef-49fb-97ef-5a54e5fab79e.png)
+![image](https://user-images.githubusercontent.com/55078043/161404544-2aeccc11-0c1e-4a20-8333-82ff485f25ac.png)
 
 Viewing html file
 
-![image](https://user-images.githubusercontent.com/55078043/145768743-47d43a7f-8294-490c-9dd3-386376e086da.png)
+![image](https://user-images.githubusercontent.com/55078043/161404550-ee106954-8710-4daf-bba2-543eef8df427.png)
 
 File list
 
-![image](https://user-images.githubusercontent.com/55078043/145768850-78661206-de06-497d-ac4f-ecd621b68b2a.png)
+![image](https://user-images.githubusercontent.com/55078043/161404557-e65cde1e-fbf6-42d0-bda6-7c295df6b7d1.png)
 
 Source code
 
-![image](https://user-images.githubusercontent.com/55078043/145768928-c2dbadb7-3498-4dfb-ade7-bcdd370ce2eb.png)
-
-HTML file web view only
-
-![image](https://user-images.githubusercontent.com/55078043/145769084-ed38eca6-1306-41e9-b594-571e11a2d4a1.png)
-
-
+![image](https://user-images.githubusercontent.com/55078043/161404573-40aaa9e7-387b-4ee3-9bf6-16ff0c6edd5f.png)
