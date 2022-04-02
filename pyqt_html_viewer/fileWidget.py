@@ -7,8 +7,8 @@ from simplePyQt5 import VerticalWidget, LeftRightWidget
 from simplePyQt5.topLeftRightWidget import TopLeftRightWidget
 
 
-class HtmlFileWidget(QWidget):
-    showHtmlSignal = pyqtSignal(int)
+class FileWidget(QWidget):
+    showSignal = pyqtSignal(int)
     removeSignal = pyqtSignal(list)
     closeSignal = pyqtSignal()
 
@@ -35,8 +35,8 @@ class HtmlFileWidget(QWidget):
 
         self.__fileListWidget = CheckBoxListWidget()
         self.__fileListWidget.checkedSignal.connect(self.__btnToggled)
-        self.__fileListWidget.itemDoubleClicked.connect(self.__showHtmlSignal)
-        self.__fileListWidget.itemActivated.connect(self.__showHtmlSignal)
+        self.__fileListWidget.itemDoubleClicked.connect(self.__showSignal)
+        self.__fileListWidget.itemActivated.connect(self.__showSignal)
 
         topWidget = LeftRightWidget()
         topWidget.setLeftWidgets([QLabel('List of files')])
@@ -90,9 +90,9 @@ class HtmlFileWidget(QWidget):
         self.setCurrentItem(idx)
         self.__chkToggled()
 
-    def __showHtmlSignal(self, item):
+    def __showSignal(self, item):
         r = self.__fileListWidget.row(item)
-        self.showHtmlSignal.emit(r)
+        self.showSignal.emit(r)
 
     def getItem(self, i):
         return self.__fileListWidget.item(i)
