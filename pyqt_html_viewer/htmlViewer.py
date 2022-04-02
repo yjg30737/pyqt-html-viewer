@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QMainWindow, QFileDialog, QWidget, \
 from PyQt5.QtCore import Qt
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
-from pyqt_html_viewer.fileWidget import HtmlFileWidget
+from pyqt_html_viewer.fileWidget import FileWidget
 from pyqt_html_viewer.htmlViewerWidget import HtmlViewerWidget
 from pyqt_html_viewer.sourceWidget import SourceWidget
 from pyqt_description_tooltip import DescriptionToolTipGetter
@@ -30,7 +30,7 @@ class HtmlViewer(QMainWindow):
         self.__srcWidget = SourceWidget()
         self.__srcWidget.closeSignal.connect(self.__srcWidgetBtnToggled)
 
-        self.__fileListWidget = HtmlFileWidget()
+        self.__fileListWidget = FileWidget()
         self.__fileListWidget.showSignal.connect(self.__showHtmlFileToViewer)
         self.__fileListWidget.showSignal.connect(self.__showHtmlSource)
         self.__fileListWidget.removeSignal.connect(self.__removeSomeFilesFromViewer)
