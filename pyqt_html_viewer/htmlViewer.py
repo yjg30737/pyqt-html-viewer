@@ -19,7 +19,6 @@ class HtmlViewer(QMainWindow):
 
     def __initUi(self):
         self.setWindowTitle('HTML Viewer')
-        self.showMaximized()
 
         self.__viewerWidget = HtmlViewerWidget()
         self.__viewerWidget.prevSignal.connect(self.__selectCurrentHtmlFileItemInList)
