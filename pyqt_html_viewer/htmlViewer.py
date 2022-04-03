@@ -24,6 +24,7 @@ class HtmlViewer(QMainWindow):
         self.__viewerWidget.prevSignal.connect(self.__selectCurrentFileItemInList)
         self.__viewerWidget.nextSignal.connect(self.__selectCurrentFileItemInList)
         self.__viewerWidget.closeSignal.connect(self.__showNavigationToolbar)
+        self.__viewerWidget.setWindowTitleBasedOnCurrentFileEnabled(True, self.windowTitle())
         self.__viewerWidget.setExtensionsExceptForImage(['.html'])
 
         self.__srcWidget = SourceWidget()
