@@ -202,14 +202,11 @@ class HtmlViewer(QMainWindow):
             self.__fileListWidget.setFilenames(filenames, idx=cur_file_idx)
             self.__srcWidget.setSourceOfFile(filenames[cur_file_idx])
 
-    def __showFileToViewer(self, r):
-        self.__viewerWidget.setCurrentIndex(r)
+    def __showFileToViewer(self, filename: str):
+        self.__viewerWidget.setCurrentFilename(filename)
 
-    def __showSource(self, r):
-        item = self.__fileListWidget.getItem(r)
-        if item:
-            filename = item.text()
-            self.__srcWidget.setSourceOfFile(filename)
+    def __showSource(self, filename: str):
+        self.__srcWidget.setSourceOfFile(filename)
 
     def __removeSomeFilesFromViewer(self, filenames: list):
         self.__viewerWidget.removeSomeFilesFromViewer(filenames)
@@ -218,5 +215,5 @@ class HtmlViewer(QMainWindow):
     def __selectCurrentFileItemInList(self):
         idx = self.__viewerWidget.getCurrentIndex()
         self.__fileListWidget.setCurrentItem(idx)
-        self.__showSource(idx)
+        self.__showSource(self.__fileListWidget.getFilenameFromRow(idx))
         self.__viewerWidget.setFocus()

@@ -75,12 +75,16 @@ class FileWidget(QWidget):
         self.__fileListWidget.setFilenames(filenames, idx)
         self.__chkToggled()
 
-    def __showSignal(self, item):
-        r = self.__fileListWidget.row(item)
-        self.showSignal.emit(r)
+    def getFilenameFromRow(self, r: int) -> int:
+        return self.__fileListWidget.getFilenameFromRow(r)
 
-    def getItem(self, i):
-        return self.__fileListWidget.item(i)
+    def __showSignal(self, item):
+        text = ''
+        if self.__fileListWidget.isFilenameOnly():
+            text = self.__fileListWidget.getAbsFilename(item.text())
+        else:
+            text = item.text()
+        self.showSignal.emit(text)
 
     def __remove(self):
         filenames_to_remove_from_list = self.__fileListWidget.getCheckedFilenames()
