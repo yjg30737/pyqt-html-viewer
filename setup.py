@@ -14,7 +14,7 @@ setup(
     install_requires=[
         'PyQt5>=5.15',
         'pyqtwebengine',
-        'pyqt-checkbox-list-widget @ git+https://git@github.com/yjg30737/pyqt-checkbox-list-widget.git@main',
+        'pyqt-checkbox-file-list-widget @ git+https://git@github.com/yjg30737/pyqt-checkbox-file-list-widget.git@main',
         'pyqt-style-setter @ git+https://git@github.com/yjg30737/pyqt-style-setter.git@main',
         'pyqt-custom-titlebar-setter @ git+https://git@github.com/yjg30737/pyqt-custom-titlebar-setter.git@main',
         'pyqt-svg-icon-pushbutton @ git+https://git@github.com/yjg30737/pyqt-svg-icon-pushbutton.git@main',

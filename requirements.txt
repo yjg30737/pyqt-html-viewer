@@ -1,4 +1,4 @@
-git+https://git@github.com/yjg30737/pyqt-checkbox-list-widget.git@main
+git+https://git@github.com/yjg30737/pyqt-checkbox-file-list-widget.git@main
 git+https://git@github.com/yjg30737/pyqt-style-setter.git@main
 git+https://git@github.com/yjg30737/pyqt-custom-titlebar-setter.git@main
 git+https://git@github.com/yjg30737/pyqt-svg-icon-pushbutton.git@main
