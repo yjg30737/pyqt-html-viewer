@@ -4,9 +4,10 @@ import os
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QWidget, \
     QSplitter, QGridLayout, QWidgetAction, QToolBar
 from PyQt5.QtCore import Qt
+from pyqt_list_viewer_widget import ListViewerWidget
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
-from pyqt_html_viewer import HtmlViewerView
+from pyqt_html_viewer.htmlViewerView import HtmlViewerView
 from pyqt_html_viewer.sourceWidget import SourceWidget
 from pyqt_description_tooltip import DescriptionToolTipGetter
 
