@@ -23,13 +23,10 @@ pip3 install git+https://github.com/yjg30737/pyqt-html-viewer.git --upgrade
 Note: If ModuleNotFoundError occured then do it all above in order.
 
 ## Included packages
-* <a href="https://github.com/yjg30737/pyqt-checkbox-list-widget.git">pyqt-checkbox-list-widget</a>
 * <a href="https://github.com/yjg30737/pyqt-style-setter.git">pyqt-style-setter</a>
 * <a href="https://github.com/yjg30737/pyqt-custom-titlebar-setter.git">pyqt-custom-titlebar-setter</a>
-* <a href="https://github.com/yjg30737/pyqt-svg-icon-pushbutton.git">pyqt-svg-icon-pushbutton</a>
 * <a href="https://github.com/yjg30737/pyqt-description-tooltip.git">pyqt-description-tooltip</a>
-* <a href="https://github.com/yjg30737/pyqt-viewer-widget.git">pyqt-viewer-widget</a>
-* <a href="https://github.com/yjg30737/simplePyQt5.git">simplePyQt5</a>
+* <a href="https://github.com/yjg30737/pyqt-list-viewer-widget.git">pyqt-list-viewer-widget</a>
 
 ## Code Example
 ```python
