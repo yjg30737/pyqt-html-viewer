@@ -6,8 +6,7 @@ from PyQt5.QtWidgets import QMainWindow, QFileDialog, QWidget, \
 from PyQt5.QtCore import Qt
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
-from pyqt_html_viewer.fileWidget import FileWidget
-from pyqt_html_viewer.htmlViewerWidget import HtmlViewerWidget
+from pyqt_html_viewer import HtmlViewerView
 from pyqt_html_viewer.sourceWidget import SourceWidget
 from pyqt_description_tooltip import DescriptionToolTipGetter
 
@@ -20,25 +19,17 @@ class HtmlViewer(QMainWindow):
     def __initUi(self):
         self.setWindowTitle('HTML Viewer')
 
-        self.__viewerWidget = HtmlViewerWidget()
-        self.__viewerWidget.prevSignal.connect(self.__selectCurrentFileItemInList)
-        self.__viewerWidget.nextSignal.connect(self.__selectCurrentFileItemInList)
-        self.__viewerWidget.closeSignal.connect(self.__showNavigationToolbar)
-        self.__viewerWidget.setWindowTitleBasedOnCurrentFileEnabled(True, self.windowTitle())
-        self.__viewerWidget.setExtensionsExceptForImage(['.html'])
+        self.__listViewerWidget = ListViewerWidget()
+        self.__listViewerWidget.closeListSignal.connect(self.__fileListWidgetBtnToggled)
+        self.__listViewerWidget.closeViewerSignal.connect(self.__showNavigationToolbar)
+        self.__listViewerWidget.setExtensions(['.html'])
+        self.__listViewerWidget.setView(HtmlViewerView())
+        self.__listViewerWidget.setWindowTitleBasedOnCurrentFileEnabled(True, self.windowTitle())
 
-        self.__srcWidget = SourceWidget()
-        self.__srcWidget.closeSignal.connect(self.__srcWidgetBtnToggled)
-
-        self.__fileListWidget = FileWidget()
-        self.__fileListWidget.showSignal.connect(self.__showFileToViewer)
-        self.__fileListWidget.showSignal.connect(self.__showSource)
-        self.__fileListWidget.removeSignal.connect(self.__removeSomeFilesFromViewer)
-        self.__fileListWidget.closeSignal.connect(self.__fileListWidgetBtnToggled)
+        self.__fileListWidget = self.__listViewerWidget.getListWidget()
 
         splitter = QSplitter()
-        splitter.addWidget(self.__fileListWidget)
-        splitter.addWidget(self.__viewerWidget)
+        splitter.addWidget(self.__listViewerWidget)
         splitter.addWidget(self.__srcWidget)
         splitter.setSizes([200, 400, 200])
         splitter.setChildrenCollapsible(False)
@@ -180,27 +171,12 @@ class HtmlViewer(QMainWindow):
         filename = QFileDialog.getOpenFileName(self, 'Open Files', '', "HTML Files (*.html)")
         if filename[0]:
             filename = filename[0]
-            dirname = os.path.dirname(filename)
-            self.__setFilesOfDirectory(dirname, filename)
+            self.__listViewerWidget.addFilenames([filename])
 
     def __loadDir(self):
         dirname = QFileDialog.getExistingDirectory(self, 'Open Directory', '', QFileDialog.ShowDirsOnly)
         if dirname:
-            self.__setFilesOfDirectory(dirname)
-
-    def __setFilesOfDirectory(self, dirname, cur_filename=''):
-        filenames = [os.path.join(dirname, filename).replace(os.path.sep, posixpath.sep) for filename in
-                     os.listdir(dirname)
-                     if os.path.splitext(filename)[-1] == '.html']
-        if filenames:
-            if cur_filename:
-                pass
-            else:
-                cur_filename = filenames[0]
-            cur_file_idx = filenames.index(cur_filename)
-            self.__viewerWidget.setFilenames(filenames, cur_filename=cur_filename)
-            self.__fileListWidget.setFilenames(filenames, idx=cur_file_idx)
-            self.__srcWidget.setSourceOfFile(filenames[cur_file_idx])
+            self.__listViewerWidget.addDirectory(dirname)
 
     def __showFileToViewer(self, filename: str):
         self.__viewerWidget.setCurrentFilename(filename)
