@@ -27,6 +27,7 @@ Note: If ModuleNotFoundError occured then do it all above in order.
 * <a href="https://github.com/yjg30737/pyqt-custom-titlebar-setter.git">pyqt-custom-titlebar-setter</a>
 * <a href="https://github.com/yjg30737/pyqt-description-tooltip.git">pyqt-description-tooltip</a>
 * <a href="https://github.com/yjg30737/pyqt-list-viewer-widget.git">pyqt-list-viewer-widget</a>
+* <a href="https://github.com/yjg30737/pyqt-get-selected-filter.git">pyqt-get-selected-filter</a>
 
 ## Code Example
 ```python
