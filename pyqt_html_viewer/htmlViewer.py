@@ -8,6 +8,8 @@ from pyqt_list_viewer_widget import ListViewerWidget
 from pyqt_svg_icon_pushbutton import SvgIconPushButton
 
 from pyqt_html_viewer.htmlViewerView import HtmlViewerView
+from pyqt_get_selected_filter import getSelectedFilter
+
 from pyqt_html_viewer.sourceWidget import SourceWidget
 from pyqt_description_tooltip import DescriptionToolTipGetter
 
@@ -15,15 +17,20 @@ from pyqt_description_tooltip import DescriptionToolTipGetter
 class HtmlViewer(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.__initVal()
         self.__initUi()
 
+    def __initVal(self):
+        self.__title = 'HTML Viewer'
+        self.__extensions = ['.html']
+
     def __initUi(self):
-        self.setWindowTitle('HTML Viewer')
+        self.setWindowTitle(self.__title)
 
         self.__listViewerWidget = ListViewerWidget()
         self.__listViewerWidget.closeListSignal.connect(self.__fileListWidgetBtnToggled)
         self.__listViewerWidget.closeViewerSignal.connect(self.__showNavigationToolbar)
-        self.__listViewerWidget.setExtensions(['.html'])
+        self.__listViewerWidget.setExtensions(self.__extensions)
         self.__listViewerWidget.setView(HtmlViewerView())
         self.__listViewerWidget.setWindowTitleBasedOnCurrentFileEnabled(True, self.windowTitle())
 
@@ -169,7 +176,7 @@ class HtmlViewer(QMainWindow):
         self.__srcWidgetToggleBtn.setChecked(self.__srcWidget.isHidden())
 
     def __loadFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Open Files', '', "HTML Files (*.html)")
+        filename = QFileDialog.getOpenFileName(self, 'Open Files', '', f"HTML Files {getSelectedFilter(self.__extensions)}")
         if filename[0]:
             filename = filename[0]
             self.__listViewerWidget.addFilenames([filename])
