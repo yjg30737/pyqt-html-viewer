@@ -33,6 +33,7 @@ class HtmlViewer(QMainWindow):
         self.__listViewerWidget.setExtensions(self.__extensions)
         self.__listViewerWidget.setView(HtmlViewerView())
         self.__listViewerWidget.setWindowTitleBasedOnCurrentFileEnabled(True, self.windowTitle())
+        self.__listViewerWidget.showSignal.connect(self.__showSource)
 
         self.__fileListWidget = self.__listViewerWidget.getListWidget()
 
@@ -123,7 +124,7 @@ class HtmlViewer(QMainWindow):
 
     def __showNavigationToolbar(self, f):
         self.__showNavigationToolbarBtn.setChecked(f)
-        self.__viewerWidget.setBottomWidgetVisible(f)
+        self.__listViewerWidget.setBottomWidgetVisible(f)
         if f:
             self.__showNavigationToolbarBtn.setToolTip(DescriptionToolTipGetter.getToolTip(title='Hide navigation bar',
                                                                                            shortcut='Ctrl+B'))
@@ -180,11 +181,14 @@ class HtmlViewer(QMainWindow):
         if filename[0]:
             filename = filename[0]
             self.__listViewerWidget.addFilenames([filename])
+            self.__showSource(filename)
 
     def __loadDir(self):
         dirname = QFileDialog.getExistingDirectory(self, 'Open Directory', '', QFileDialog.ShowDirsOnly)
         if dirname:
             self.__listViewerWidget.addDirectory(dirname)
+            filename = [os.path.join(dirname, filename) for filename in os.listdir(dirname) if os.path.splitext(filename)[-1] in self.__extensions][0]
+            self.__showSource(filename)
 
     def __showFileToViewer(self, filename: str):
         self.__viewerWidget.setCurrentFilename(filename)
