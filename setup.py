@@ -15,8 +15,8 @@ setup(
     install_requires=[
         'PyQt5>=5.15',
         'pyqtwebengine',
-        'pyqt-style-setter @ git+https://git@github.com/yjg30737/pyqt-style-setter.git@main',
-        'pyqt-custom-titlebar-setter @ git+https://git@github.com/yjg30737/pyqt-custom-titlebar-setter.git@main',
+        'pyqt-style-setter>=0.0.1',
+        'pyqt-custom-titlebar-setter>=0.0.1',
         'pyqt-description-tooltip @ git+https://git@github.com/yjg30737/pyqt-description-tooltip.git@main',
         'pyqt-list-viewer-widget @ git+https://git@github.com/yjg30737/pyqt-list-viewer-widget.git@main',
         'pyqt-get-selected-filter @ git+https://git@github.com/yjg30737/pyqt-get-selected-filter.git@main'
